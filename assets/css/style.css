@@ -1,0 +1,235 @@
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font);
+
+}
+/* fim do reset */
+
+/* variáveis globais */
+:root {
+    --font: "Roboto", sans-serif;
+    --color1: #005ab9;
+    --color2: #777777;
+}
+/* fim das variáveis globais */
+
+/* estilo global */
+body,
+html {
+    width: 100vw;
+    min-height: 100vh;
+    background: #FFFF;
+    background: linear-gradient(152deg, rgba(255, 255, 255, 1) 0%, rgba(166, 201, 255, 1) 42%, rgba(200, 229, 247, 1) 80%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.convert-label {
+    color: var(--color2);
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.convert-label span {
+    font-weight: bold;
+}
+
+.group-select {
+    width: 100%;
+    padding: 10px 5px;
+    margin-bottom: 20px;
+    appearance: none;
+    outline: none;
+    border: 1px solid #00000059;
+}
+
+.group-select:focus {
+    border-color: var(--color1);
+    box-shadow: 0px 0px 10px #00346b69;
+}
+
+.icon-convert {
+    color: var(--color1);
+    width: 100%;
+    text-align: center;
+    font-size: 1.7rem;
+}
+.img-result {
+    display: inline-block;
+    width: 40px;
+    margin: 0 auto;
+}
+.text-from,
+.text-to {
+    display: inline;
+    text-align: center;
+    font-size: 14px;
+    color: var(--color2);
+}
+/* fim do estilo global */
+
+/* Animação flutuante */
+.img-convert {
+    display: block;
+    width: 150px;
+    margin: 10px;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+/* fim da animação flutuante */
+
+/* estilo do conteúdo principal */
+.main-content {
+    background-color: #fff;
+    width: 450px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px #00000050;
+    margin-bottom: 20px;
+}
+
+.interface {
+    padding: 20px 6%;
+}
+
+.main-content .interface h1 {
+    text-align: center;
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+
+}
+
+/* estilo do formulário de conversão */
+.form-convert {
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+#convert-button {
+    color: #fff;
+    padding: 10px 0;
+    font-size: 1.2rem;
+    background-color: var(--color1);
+    border: none;
+    border-radius: 7px;
+    box-shadow: 0px 0px 10px #013f8170;
+    transition: background-color .5s ease;
+    cursor: pointer;
+}
+
+#convert-button:hover {
+    background-color: #027cff;
+}
+/* fim do estilo do formulário de conversão */
+
+/* estilo da seção de resultados */
+.section-result {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 0;
+    border-radius: 20px;
+
+}
+
+.container-left {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.result-from {
+    width: 100%;
+    text-align: center;
+}
+
+.icon-result {
+    color: var(--color1);
+    font-size: 1.7rem;
+}
+
+.container-right {
+    width: 50%;
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.result-to {
+    width: 100%;
+    text-align: center;
+}
+/* fim do estilo da seção de resultados */
+/* fim do estilo do conteúdo principal */
+
+/* estilo para dispositivos móveis */
+@media (max-width: 767px) {
+
+    body,
+    html {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: none;
+    }
+
+    .img-convert {
+        display: inline-block;
+        width: 100px;
+        margin-top: 10px;
+        animation: float 4s ease-in-out infinite;
+    }
+
+    .interface {
+        padding: 10px 6%;
+    }
+
+    .main-content {
+        background-color: #fff;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        box-shadow: none;
+        margin-bottom: 0px;
+        border: none;
+    }
+
+    .group-select {
+        margin-bottom: 10px;
+    }
+
+
+    .form-convert {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+
+    }
+
+}
+/* fim do estilo para dispositivos móveis */
