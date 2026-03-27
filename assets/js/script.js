@@ -52,8 +52,8 @@ function conversorDeMoeda(event){
         }).format(valorDolarConvertido);
 
         resultadoPara.innerHTML = `${valorDolarFormatado}`;
-        nomeDaMoeda.innerHTML = 'Dólar(USD';
-        imagemDaMoeda.src = '../assets/img/img-dolar-usa.png'
+        nomeDaMoeda.innerHTML = 'Dólar(USD)';
+        imagemDaMoeda.src = 'assets/img/img-dolar-usa.png';
     }
     
     else if(converterPara === 'euro'){
@@ -67,7 +67,7 @@ function conversorDeMoeda(event){
         
         resultadoPara.innerHTML = `${valorEuroFormatado}`;
         nomeDaMoeda.innerHTML = 'Euro(EUR)';
-        imagemDaMoeda.src = '../assets/img/img-euro.png';
+        imagemDaMoeda.src = 'assets/img/img-euro.png';
     }
 
     else if(converterPara ===  'libra'){
@@ -81,7 +81,7 @@ function conversorDeMoeda(event){
 
         resultadoPara.innerHTML = `${valorLibraFormatado}`;
         nomeDaMoeda.innerHTML = 'Libra(GBP)';
-        imagemDaMoeda.src = '../assets/img/img-libra.png';
+        imagemDaMoeda.src = 'assets/img/img-libra.png';
     }
 
     else if(converterPara === 'bitcoin'){
@@ -95,7 +95,7 @@ function conversorDeMoeda(event){
 
         resultadoPara.innerHTML = `${valorBitcoinFormatado}`;
         nomeDaMoeda.innerHTML = 'Bitcoin(BTC)';
-        imagemDaMoeda.src = '../assets/img/img-bitcoin.png';
+        imagemDaMoeda.src = 'assets/img/img-bitcoin.png';
     }
 
     //chamar a função para mostrar a section
