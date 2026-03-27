@@ -1,112 +1,85 @@
-//selecionar a section de resultados
-const mostraResultado = document.querySelector('.section-result')
-//função para mostrar a section de resultados com animação
-function resultadoAnimado(){
-    
+// Seleciona os elementos usados na conversao
+const mostraResultado = document.querySelector('.section-result');
+const formConvert = document.querySelector('.form-convert');
+const resultadoDe = document.querySelector('.result-from');
+const resultadoPara = document.querySelector('.result-to');
+const nomeDaMoeda = document.querySelector('.text-to');
+const imagemDaMoeda = document.querySelector('.img-currency');
+
+const moedas = {
+    dolar: {
+        cotacao: 5.24,
+        locale: 'en-US',
+        currency: 'USD',
+        nome: 'Dolar(USD)',
+        imagem: 'assets/img/img-dolar-usa.png',
+        alt: 'Imagem da bandeira dos Estados Unidos'
+    },
+    euro: {
+        cotacao: 6.04,
+        locale: 'de-DE',
+        currency: 'EUR',
+        nome: 'Euro(EUR)',
+        imagem: 'assets/img/img-euro.png',
+        alt: 'Imagem da bandeira da Uniao Europeia'
+    },
+    libra: {
+        cotacao: 6.98,
+        locale: 'en-GB',
+        currency: 'GBP',
+        nome: 'Libra(GBP)',
+        imagem: 'assets/img/img-libra.png',
+        alt: 'Imagem da bandeira do Reino Unido'
+    },
+    bitcoin: {
+        cotacao: 0.0000048,
+        locale: 'en-US',
+        currency: 'BTC',
+        nome: 'Bitcoin(BTC)',
+        imagem: 'assets/img/img-bitcoin.png',
+        alt: 'Imagem do simbolo do Bitcoin'
+    }
+};
+
+function resultadoAnimado() {
     mostraResultado.classList.remove('show-result');
     void mostraResultado.offsetWidth;
     mostraResultado.classList.add('show-result');
 }
 
-//selecionar o botão de conversão
-const btnconvert = document.getElementById('convert-button');
-
-//função que faz a conversão
-function conversorDeMoeda(event){
-    // evente pata previnir da página ser carregada quando o botão for clicado
+function conversorDeMoeda(event) {
+    // Evita recarregar a pagina ao enviar o formulario
     event.preventDefault();
 
-    //pegar valores digitado e selecionado pelo usúario
-    const converterDe = document.getElementById('convert-value').value;
-    const converterPara = document.getElementById('convert-to').value;
-    
-    const resultadoDe = document.querySelector('.result-from');
-    const resultadoPara = document.querySelector('.result-to');
+    const valorEntrada = Number(document.getElementById('convert-value').value);
+    const moedaSelecionada = document.getElementById('convert-to').value;
+    const dadosMoeda = moedas[moedaSelecionada];
 
-    const nomeDaMoeda = document.querySelector('.text-to');
-    const imagemDaMoeda = document.querySelector('.img-currency')
+    if (!dadosMoeda || Number.isNaN(valorEntrada)) {
+        return;
+    }
 
-   //Valor digitado formatado
-    resultadoDe.innerHTML = new Intl.NumberFormat('pt-BR', {
+    resultadoDe.textContent = new Intl.NumberFormat('pt-BR', {
         style: 'currency',
-        currency:'BRL',
-    }).format(converterDe);
+        currency: 'BRL'
+    }).format(valorEntrada);
 
-    
+    const valorConvertido = valorEntrada / dadosMoeda.cotacao;
 
-    
-    //Valores da moeda selecionada(Valores proximos)
-    const cotacaoDolar = 5.24;
-    const cotacaoEuro = 6.04;
-    const cotacaoLibra = 6.98;
-    const cotacaoBitcoin = 0.0000048;
+    resultadoPara.textContent = new Intl.NumberFormat(dadosMoeda.locale, {
+        style: 'currency',
+        currency: dadosMoeda.currency
+    }).format(valorConvertido);
 
-    //Tomar decição baseado na moeda selecionada
-    if(converterPara === 'dolar'){
-        
-        const valorDolarConvertido = converterDe / cotacaoDolar;
-        
-        const valorDolarFormatado = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-        }).format(valorDolarConvertido);
+    nomeDaMoeda.textContent = dadosMoeda.nome;
+    imagemDaMoeda.src = dadosMoeda.imagem;
+    imagemDaMoeda.alt = dadosMoeda.alt;
 
-        resultadoPara.innerHTML = `${valorDolarFormatado}`;
-        nomeDaMoeda.innerHTML = 'Dólar(USD)';
-        imagemDaMoeda.src = 'assets/img/img-dolar-usa.png';
-    }
-    
-    else if(converterPara === 'euro'){
-
-        const valorEuroConvertido = converterDe / cotacaoEuro;
-
-        const valorEuroFormatado = new Intl.NumberFormat('de-DE', {
-            style:'currency',
-            currency:'EUR',
-        }).format(valorEuroConvertido);
-        
-        resultadoPara.innerHTML = `${valorEuroFormatado}`;
-        nomeDaMoeda.innerHTML = 'Euro(EUR)';
-        imagemDaMoeda.src = 'assets/img/img-euro.png';
-    }
-
-    else if(converterPara ===  'libra'){
-
-        const valorLibraConvertido = converterDe / cotacaoLibra;
-
-        const valorLibraFormatado = new Intl.NumberFormat('en-GB', {
-            style:'currency',
-            currency:'GBP',
-        }).format(valorLibraConvertido);
-
-        resultadoPara.innerHTML = `${valorLibraFormatado}`;
-        nomeDaMoeda.innerHTML = 'Libra(GBP)';
-        imagemDaMoeda.src = 'assets/img/img-libra.png';
-    }
-
-    else if(converterPara === 'bitcoin'){
-        
-        const valorBitcoinConvertido = converterDe / cotacaoBitcoin;
-
-        const valorBitcoinFormatado = new Intl.NumberFormat('en-US', {
-            style:'currency',
-            currency:'BTC',
-        }).format(valorBitcoinConvertido);
-
-        resultadoPara.innerHTML = `${valorBitcoinFormatado}`;
-        nomeDaMoeda.innerHTML = 'Bitcoin(BTC)';
-        imagemDaMoeda.src = 'assets/img/img-bitcoin.png';
-    }
-
-    //chamar a função para mostrar a section
     resultadoAnimado();
 }
 
-
-
-// evento de clique e touch
-btnconvert.addEventListener('click' , conversorDeMoeda);
-btnconvert.addEventListener('touchstart' , conversorDeMoeda);
+// Captura click, Enter e mobile de forma consistente
+formConvert.addEventListener('submit', conversorDeMoeda);
 
 
 
