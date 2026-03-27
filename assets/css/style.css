@@ -12,7 +12,7 @@
 :root {
     --font: "Roboto", sans-serif;
     --color1: #005ab9;
-    --color2: #777777;
+    --color2: #5c5b5b;
 }
 /* fim das variáveis globais */
 
@@ -48,10 +48,27 @@ html {
     border: 1px solid #00000059;
 }
 
+
 .group-select:focus {
     border-color: var(--color1);
     box-shadow: 0px 0px 10px #00346b69;
 }
+
+/* Remove as setas dos navegares Chrome, Safari, Edge, Opera */
+#convert-value[type="number"]::-webkit-inner-spin-button,
+#convert-value[type="number"]::-webkit-outer-spin-button {
+    
+    -webkit-appearance: none;
+    margin: 0;
+
+}
+/* Remove as setas dos navegar FireFox*/
+#convert-value[type="number"]{
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+
 
 .icon-convert {
     color: var(--color1);

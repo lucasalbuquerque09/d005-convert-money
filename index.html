@@ -18,25 +18,19 @@
     <!-- imagem do logo -->
     <img class="img-convert" src="assets/img/logo.png" alt="logo-converso-de-moeda">
     <!-- Fim da imagem do logo -->
-    
+
     <!-- Início do conteúdo principal -->
     <main class="main-content">
         <!-- Início do formulário de conversão -->
         <div class="interface">
-            
+
             <h1>Converso de Moedas</h1>
 
             <form class="form-convert" action="#" method="post">
 
 
-                <label class="convert-label" for="convert-from">Converte <span>de</span></label>
-                <select class="group-select" name="converter-de" id="convert-from">
-                    <option value="real" selected>Real(BRL)</option>
-                    <option value="dolar">Dólar dos Estados Unidos(USD)</option>
-                    <option value="euro">Euro(EUR)</option>
-                    <option value="libra">Libra Estalina(GBP)</option>
-                    <option value="bitcoin">Bitcoin (BTC)</option>
-                </select>
+                <label class="convert-label" for="convert-BRL">Converte <span>de</span></label>
+                <input class="group-select" type="text" name="convert-from" id="convert-BRL" value="Real(BRL)" disabled>
 
                 <div class="icon-convert">
                     <i class="bi bi-arrow-down-up"></i>
@@ -44,30 +38,29 @@
 
                 <label class="convert-label" for="convert-to">Converter <span>para</span></label>
                 <select class="group-select" name="converter-para" id="convert-to">
-                    <option value="dolar" selected> Dólar dos Estados Unido(USD)</option>
-                    <option value="real">Real(BRL)</option>
+                    <option value="" disabled selected>Selecione a moeda</option>
+                    <option value="dolar"> Dólar dos Estados Unido(USD)</option>
                     <option value="euro">Euro(EUR)</option>
                     <option value="libra">Libra(GBP)</option>
                     <option value="bitcoin">Bitcoin(BTC)</option>
                 </select>
 
                 <label class="convert-label" for="convert-value">Valor</label>
-                <input class="group-select" type="text" name="valor" id="convert-value" placeholder="0,00" required
-                    autocomplete="off">
+                <input class="group-select" type="number" name="valor" id="convert-value" placeholder="0,00" required autocomplete="off">
 
                 <button id="convert-button" type="submit">Converter</button>
 
             </form>
         </div>
         <!-- Fim do formulário de conversão -->
-        
+
         <!-- Início da seção de resultados -->
         <section class="section-result">
 
             <div class="container-left">
                 <img class="img-result" src="assets/img/img-br.png" alt="Imagem-da-bandeira-do-brasil">
                 <span class="text-from">Real(BRL)</span>
-                <p class="result-from">0,00</p>
+                <p class="result-from">0.00</p>
             </div>
 
             <div class="icon-result">
@@ -77,11 +70,13 @@
             <div class="container-right">
                 <img class="img-result" src="assets/img/img-dolar-usa.png" alt="Imagem-da-bandeira-dos-estados-unidos">
                 <span class="text-to">Dólar(USD)</span>
-                <p class="result-to">0,00</p>
+                <p class="result-to">0.00</p>
             </div>
 
         </section>
         <!-- Fim da seção de resultados -->
+
+        <script src="assets/js/script.js"></script>
 
     </main>
     <!-- Fim do conteúdo principal -->
